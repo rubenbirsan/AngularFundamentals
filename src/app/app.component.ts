@@ -4,21 +4,16 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
-    <section>
-      <div class="example-button-row">
-        <button mat-raised-button color="primary" (click)="handleClick($event)">Change Name</button>
-      </div>
+  
+      
+        <button  (click)="handleClick(username.value)">GetValue</button>
+   
       <input
-        type="text"
-        [ngModel]="name"
-        (ngModelChange)="handleChange($event)"
+        type="text" #username
       />
-      <input
-        type="text"
-        [(ngModel)]="name"
-      />
+
       <div>{{ name }}</div>
-    </section>
+   
   `,
 })
 export class AppComponent {
@@ -33,12 +28,8 @@ export class AppComponent {
     this.title = 'Angular Ultimate';
   }
 
-  handleChange(value: string) {
-
-    this.name = value;
-  }
-  handleClick(event: any) {
-    console.log(event);
-    this.name = "Motto";
+  handleClick(value: string) {
+    console.log(value);
+    // this.name = "Motto";
   }
 }

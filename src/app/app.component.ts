@@ -8,11 +8,14 @@ import { Component } from '@angular/core';
       <div class="example-button-row">
         <button mat-raised-button color="primary" (click)="handleClick($event)">Change Name</button>
       </div>
-      <input matInput placeholder="Ex. Pizza"
+      <input
         type="text"
-        [value]="name"
-        (blur)="handleBlur($event)"
-        (input)="handleInput($event)"
+        [ngModel]="name"
+        (ngModelChange)="handleChange($event)"
+      />
+      <input
+        type="text"
+        [(ngModel)]="name"
       />
       <div>{{ name }}</div>
     </section>
@@ -30,14 +33,9 @@ export class AppComponent {
     this.title = 'Angular Ultimate';
   }
 
-  handleBlur(event: any) {
-    console.log(event);
-    this.name = event.target.value;
-  }
+  handleChange(value: string) {
 
-  handleInput(event: any) {
-    console.log(event);
-    this.name = event.target.value;
+    this.name = value;
   }
   handleClick(event: any) {
     console.log(event);
